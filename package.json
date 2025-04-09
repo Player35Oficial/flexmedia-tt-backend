@@ -1,0 +1,26 @@
+{
+  "name": "flexmedia-tt-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node-dev ./src/index.ts",
+    "production": "node ./build/index.js",
+    "postinstall": "tsc"
+  },
+  "author": "Yuri Santana",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "firebase-admin": "^13.2.0",
+    "firebase-functions": "^6.3.2",
+    "http-status-codes": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3"
+  }
+}
