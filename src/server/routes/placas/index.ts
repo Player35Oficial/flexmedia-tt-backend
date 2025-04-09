@@ -9,5 +9,8 @@ placaRouter.get("/:id", placaController.getPlacaById);
 placaRouter.post("/add", placaController.createPlaca);
 placaRouter.put("/update/:id", placaController.updatePlaca);
 placaRouter.delete("/delete/:id", placaController.deletePlaca);
+placaRouter.get("/helper/nomes", (req, res, next) =>
+  placaController.listPlacasNames(req, res).catch(next)
+);
 
 export default placaRouter;

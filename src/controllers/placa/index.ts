@@ -6,6 +6,7 @@ import {
   IPlacaEletronicaCreate,
   IPlacaEletronicaUpdate,
 } from "../../server/database/models/PlacaEletronica";
+import { INames } from "../../server/database/providers/ComponenteEletronico";
 
 const placaProvider = new PlacaEletronicaProvider();
 
@@ -16,6 +17,21 @@ class PlacaEletronicaController {
   ): Promise<any> {
     try {
       const placas = await placaProvider.getPlacas();
+      return res.status(StatusCodes.OK).json(placas);
+    } catch (error) {
+      console.error("Erro ao listar placas: ", error);
+      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+        message: "Erro ao listar placas",
+      });
+    }
+  }
+
+  async listPlacasNames(
+    req: Request<{}, string[]>,
+    res: Response<INames[] | { message: string }>
+  ): Promise<any> {
+    try {
+      const placas = await placaProvider.getPlacasNames();
       return res.status(StatusCodes.OK).json(placas);
     } catch (error) {
       console.error("Erro ao listar placas: ", error);

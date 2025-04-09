@@ -16,6 +16,16 @@ export class PlacaEletronicaProvider {
     })) as IPlacaEletronica[];
   }
 
+  async getPlacasNames(): Promise<{ nome: string }[]> {
+    const snapshot = await PLACAS_ELETRONICAS_COLLECTION.get();
+    return snapshot.docs.map((doc) => {
+      const data = doc.data();
+      return {
+        nome: data.nome,
+      };
+    });
+  }
+
   async getPlacaById(id: string): Promise<IPlacaEletronica | undefined> {
     const doc = await PLACAS_ELETRONICAS_COLLECTION.doc(id).get();
     if (doc.exists) {
